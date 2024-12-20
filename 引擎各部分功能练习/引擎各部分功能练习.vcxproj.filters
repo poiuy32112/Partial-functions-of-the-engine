@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="C++反射从设计到实现">
+      <UniqueIdentifier>{ee93afc7-603b-4411-aa7f-fd8023964268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++反射从设计到实现\reflect">
+      <UniqueIdentifier>{e06d8f4d-be7f-4a12-8dc5-c18bb3403f5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++反射从设计到实现\utility">
+      <UniqueIdentifier>{80e1c769-5eb8-4ff2-bc03-4449460ea469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++反射从设计到实现\test">
+      <UniqueIdentifier>{c4774c12-a0a1-4c20-9456-2c8a9796a7e5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="反射机制1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="反射机制2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>C++反射从设计到实现</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassFactory.cpp">
+      <Filter>C++反射从设计到实现\reflect</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ClassFactory.h">
+      <Filter>C++反射从设计到实现\reflect</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>C++反射从设计到实现\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="A.h">
+      <Filter>C++反射从设计到实现\test</Filter>
+    </ClInclude>
+    <ClInclude Include="B.h">
+      <Filter>C++反射从设计到实现\test</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassRegister.h">
+      <Filter>C++反射从设计到实现\reflect</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
