@@ -143,6 +143,7 @@
     <ClInclude Include="B.h" />
     <ClInclude Include="ClassFactory.h" />
     <ClInclude Include="ClassField.h" />
+    <ClInclude Include="ClassMethod.h" />
     <ClInclude Include="ClassRegister.h" />
     <ClInclude Include="Singleton.h" />
   </ItemGroup>

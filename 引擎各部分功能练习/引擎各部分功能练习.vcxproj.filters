@@ -57,7 +57,10 @@
       <Filter>C++反射从设计到实现\reflect</Filter>
     </ClInclude>
     <ClInclude Include="ClassRegister.h">
-      <Filter>C++反射从设计到实现\test</Filter>
+      <Filter>C++反射从设计到实现\reflect</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassMethod.h">
+      <Filter>C++反射从设计到实现\reflect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,7 +1,8 @@
 #pragma once
 
-#include<string>
-#include"ClassFactory.h"
+#include "ClassFactory.h"
+#include <iostream>
+#include <string>
 
 namespace yazi
 {
@@ -24,6 +25,13 @@ public:
 		ClassFactory * factory = Singleton<ClassFactory>::instance();
 		factory->register_class_field(className, fieldName, fieldType, offset);
 	}
+
+	ClassRegister(const std::string& className, const std::string& methodName, uintptr_t method)
+	{
+		std::cout << "class register method " << className << "." << methodName << std::endl;
+		ClassFactory* factory = Singleton<ClassFactory>::instance();
+		factory->register_class_method(className, methodName, method);
+	}
 };
 
 #define REGISTER_CLASS(className)				\
@@ -39,5 +47,9 @@ public:
 	className className##fieldName; \
 	ClassRegister classRegister##className##fieldName(#className, #fieldName, #fieldType, (size_t)(&(className##fieldName.fieldName)) - (size_t)(&className##fieldName))
 
+
+#define REGISTER_CLASS_METHOD(className, methodName) \
+	std::function<int(className*, int)> className##methodName##method = &className::methodName; \
+	ClassRegister classRegister##className##methodName(#className, #methodName, (uintptr_t)&(className##methodName##method))
 }
 }

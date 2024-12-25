@@ -1,8 +1,8 @@
 #pragma once
-
+#include "ClassRegister.h"
 #include <iostream>
 #include <string>
-#include "ClassRegister.h"
+
 using namespace yazi::reflect;
 
 class B : public Object

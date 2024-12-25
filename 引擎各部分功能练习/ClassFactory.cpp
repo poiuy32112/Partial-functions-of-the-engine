@@ -1,4 +1,5 @@
 #include "ClassFactory.h"
+
 using namespace yazi::reflect;
 
 void Object::set_class_name(const std::string& className)
@@ -24,6 +25,15 @@ ClassField* Object::get_field(const std::string& fieldName)
 {
 	ClassFactory* factory = Singleton<ClassFactory>::instance();
 	return factory->get_field(m_className, fieldName);
+}
+
+int Object::call(const std::string& methodName, int num)
+{
+	ClassFactory* factory = Singleton<ClassFactory>::instance();
+	ClassMethod* method = factory->get_class_method(m_className, methodName);
+	auto func = method->method();
+	typedef std::function<int(decltype(this), int)> class_method;
+	return (*((class_method*)func))(this, num);
 }
 
 void ClassFactory::register_class(const std::string& className, create_object method)
@@ -64,6 +74,36 @@ ClassField* ClassFactory::get_field(const std::string& className, const std::str
 	for (auto it = fields.begin(); it != fields.end(); it++)
 	{
 		if ((*it)->name() == fieldName)
+		{
+			return (*it);
+		}
+	}
+	return nullptr;
+}
+
+void ClassFactory::register_class_method(const std::string& className, const std::string& methodName, uintptr_t method)
+{
+	m_classMethods[className].push_back(new ClassMethod(methodName, method));
+}
+int ClassFactory::get_class_method_count(const std::string className)
+{
+	return m_classMethods[className].size();
+}
+ClassMethod* ClassFactory::get_class_method(const std::string& className, int pos)
+{
+	int size = m_classMethods[className].size();
+	if (pos < 0 || pos >= size)
+	{
+		return nullptr;
+	}
+	return m_classMethods[className][pos];
+}
+ClassMethod* ClassFactory::get_class_method(const std::string& className, const std::string& methodName)
+{
+	auto methods = m_classMethods[className];
+	for (auto it = methods.begin(); it != methods.end(); it++)
+	{
+		if ((*it)->name() == methodName)
 		{
 			return (*it);
 		}

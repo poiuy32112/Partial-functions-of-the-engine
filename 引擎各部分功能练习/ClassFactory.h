@@ -1,12 +1,14 @@
 #pragma once
 
-#include "Singleton.h"
-#include<string>
-#include <map>
-using namespace yazi::utility;
-
 #include "ClassField.h"
+#include "ClassMethod.h"
+#include "Singleton.h"
+#include <functional>
+#include <map>
+#include <string>
 #include <vector>
+
+using namespace yazi::utility;
 
 namespace yazi
 {
@@ -32,6 +34,8 @@ public:
 	template <typename T>
 	void set(const std::string& fieldName, const T& value);
 
+	int call(const std::string& methodName, int num);
+
 	virtual void show() = 0;
 
 private:
@@ -52,6 +56,11 @@ public:
 	ClassField* get_field(const std::string& className, int pos);
 	ClassField* get_field(const std::string& className, const std::string& fieldName);
 
+	void register_class_method(const std::string& className, const std::string& methodName, uintptr_t method);
+	int get_class_method_count(const std::string className);
+	ClassMethod* get_class_method(const std::string& className, int pos);
+	ClassMethod* get_class_method(const std::string& className, const std::string& methodName);
+
 private:
 	ClassFactory() {}
 	~ClassFactory() {}
@@ -59,6 +68,7 @@ private:
 private:
 	std::map<std::string, create_object> m_classMap;
 	std::map<std::string, std::vector<ClassField*>> m_classFields;
+	std::map<std::string, std::vector<ClassMethod*>> m_classMethods;
 };
 
 template <typename T>
